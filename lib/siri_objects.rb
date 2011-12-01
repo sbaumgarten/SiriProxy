@@ -119,6 +119,23 @@ end
 add_property_to_class(SiriMapItemSnippet, :userCurrentLocation)
 add_property_to_class(SiriMapItemSnippet, :items)
 
+class SiriDisambiguationList < SiriObject
+  def initialize(speakableSelectionResponse="OK...", listenAfterSpeaking=true, speakableFinalDelimiter=", or ", speakableDelimiter=", ", items=[])
+    super("DisambiguationList", "com.apple.ace.assistant")
+    self.speakableSelectionResponse = speakableSelectionResponse
+    self.listenAfterSpeaking = listenAfterSpeaking
+    self.speakableFinalDelimiter = speakableFinalDelimiter
+    self.speakableDelimiter = speakableDelimiter
+    self.items = items
+  end
+end
+add_property_to_class(SiriDisambiguationList, :speakableSelectionResponse)
+add_property_to_class(SiriDisambiguationList, :listenAfterSpeaking)
+add_property_to_class(SiriDisambiguationList, :speakableFinalDelimiter)
+add_property_to_class(SiriDisambiguationList, :speakableDelimiter)
+add_property_to_class(SiriDisambiguationList, :items)
+
+
 class SiriButton < SiriObject
   def initialize(text="Button Text", commands=[])
     super("Button", "com.apple.ace.assistant")
@@ -159,6 +176,18 @@ end
 add_property_to_class(SiriMapItem, :label)
 add_property_to_class(SiriMapItem, :detailType)
 add_property_to_class(SiriMapItem, :location)
+
+class SiriListItem < SiriObject
+  def initialize(title="", speakableText="", commands=[])
+    super("ListItem", "com.apple.ace.assistant")
+    self.title = title
+    self.speakableText = speakableText
+    self.commands = commands
+  end
+end
+add_property_to_class(SiriListItem, :title)
+add_property_to_class(SiriListItem, :speakableText)
+add_property_to_class(SiriListItem, :commands)
 
 #####
 # Commands
